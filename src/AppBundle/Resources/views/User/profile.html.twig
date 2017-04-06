@@ -1,0 +1,34 @@
+{% extends "AppBundle:Layouts:layout.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/custom/buttons-follow.js') }}"></script>
+    <script src="{{ asset('assets/js/custom/profile.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="col-lg-10 box-default profile-box">
+
+        <div class="avatar">
+            {% if user.image == null %}
+                <img src="{{ asset('assets/images/default.png') }}" alt="{{ user.nick }}">
+            {% else %}
+                <img src="{{ asset('uploads/media/'~user.id~'_usermedia/'~user.image) }}" alt="{{ user.nick }}">
+            {% endif %}
+        </div>
+
+        <div class="name-surname">
+
+            <h2>{{ user.name }} {{ user.surname }}</h2>
+            <div class="clearfix"></div>
+            <span class="nickname">
+                {{ user.nick }}
+            </span>
+        </div>
+
+        
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+{% endblock %}
