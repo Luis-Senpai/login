@@ -1,66 +1,71 @@
 {% extends "AppBundle:Layouts:layout.html.twig" %}
 
 {% block stylesheets %}
-{{ parent() }}
-
-<link rel="stylesheet" href="{{ asset('assets/fullcalendar-3.2.0/fullcalendar.css') }}" type="text/css">
-<link rel="stylesheet" href="{{ asset('//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css') }}">
-<link rel="stylesheet" href="{{ asset('/resources/demos/style.css') }}">
-
+    {{ parent() }}
+<!--
+    <link rel="stylesheet" href="{{ asset('assets/fullcalendar-3.2.0/fullcalendar.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css') }}">
+    <link rel="stylesheet" href="{{ asset('/resources/demos/style.css') }}">
+ -->
 {% endblock %}
 
 {% block javascripts %}
-{{ parent() }}
+    {{ parent() }}
+<!--
+    <script src="{{ asset('https://code.jquery.com/jquery-1.12.4.js') }}"></script>
+    <script src="{{ asset('https://code.jquery.com/ui/1.12.1/jquery-ui.js') }}"></script>
+    <script src="{{ asset('assets/fullcalendar-3.2.0/lib/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('assets/fullcalendar-3.2.0/lib/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/fullcalendar-3.2.0/lib/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/fullcalendar-3.2.0/fullcalendar.js') }}"></script>
+ -->
+    <script type="text/javascript">
 
-<script src="{{ asset('https://code.jquery.com/jquery-1.12.4.js') }}"></script>
-<script src="{{ asset('https://code.jquery.com/ui/1.12.1/jquery-ui.js') }}"></script>
-<script src="{{ asset('assets/fullcalendar-3.2.0/lib/jquery-ui.min.js') }}"></script>
-<script src="{{ asset('assets/fullcalendar-3.2.0/lib/jquery.min.js') }}"></script>
-<script src="{{ asset('assets/fullcalendar-3.2.0/lib/moment.min.js') }}"></script>
-<script src="{{ asset('assets/fullcalendar-3.2.0/fullcalendar.js') }}"></script>
-<script type="text/javascript">
-	
-$(document).ready(function() {
-    // página cargada, inicializamos el calendario...
+        $(document).ready(function () {
+            // página cargada, inicializamos el calendario...
 
-    $('#calendar').fullCalendar({
-        // Las opciones van aquí
+            $('#calendar').fullCalendar({
+                // Las opciones van aquí
 
-        selectable: true,
-        editable: true,
+                selectable: true,
+                editable: true,
 
-			dayClick: function(date, jsEvent, view) {
+                dayClick: function (date) {
 
-       		alert('Fecha: ' + date.format());
-       		
-       		},
+                    $('#divPrueba').dialog();
+                    
+                }
+            })
+        });
 
-       		eventClick: function(event, jsEvent, view) {
+    </script>
 
-	        $("#divPrueba").dialog('');
-
-	    	}
-    })
-});
-	
-</script>
-   
 {% endblock %}
 
 
 {% block content %}
+    <link rel="stylesheet" href="assets/fullcalendar-3.2.0/fullcalendar.css" type="text/css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">    
+    
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+    <script src="assets/fullcalendar-3.2.0/lib/moment.min.js"></script>
+    <script src="assets/fullcalendar-3.2.0/fullcalendar.js"></script>
 
-{{ app.user.name }} 
-{{ app.user.surname }} 
+    {{ app.user.name }} 
+    {{ app.user.surname }} 
 
-<div class="col-md-6" id='calendar'>
+    <div class="col-md-6" id='calendar'>
 
-</div>
+    </div>
 
 
-<div id="divPrueba">
-	<h1> Hola </h1>
-</div>
+    <div id="divPrueba" hidden="">
+        <input type="text" value="">
+        
+    </div>
 
 
 
